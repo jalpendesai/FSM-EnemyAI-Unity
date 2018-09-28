@@ -17,6 +17,9 @@ public class EnemyAI : MonoBehaviour {
     public Transform pointB;
     [HideInInspector]public GameObject player;
 
+    // Chase State
+
+
     // Fireing buller
     public float timer = 2;
     public GameObject fireBall;
@@ -75,7 +78,7 @@ public class EnemyAI : MonoBehaviour {
         distanceFromTarget = Vector3.Distance(waypoints[currentTarget].position, transform.position);
         animator.SetFloat("distanceFromWaypoint", distanceFromTarget);
 
-
+        
         
     }
 
@@ -96,8 +99,16 @@ public class EnemyAI : MonoBehaviour {
     // Chase State
     public void ChaseState()
     {
+        StartCoroutine(Chase());       
+    }
+
+    // --- Chasing Player ---
+    IEnumerator Chase()
+    {
         navMeshAgent.SetDestination(player.transform.position);
         navMeshAgent.speed *= 2;
+        yield return new WaitForFixedUpdate();
+
     }
 
     // Fire State
