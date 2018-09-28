@@ -24,6 +24,7 @@ public class ChaseState : StateMachineBehaviour {
     {
         //Debug.Log("Chase Exit");
         EnemyAI enemyAi = animator.gameObject.GetComponent<EnemyAI>();
+        enemyAi.navMeshAgent.speed = 10;
         enemyAi.SetNextPoint();
     }
 

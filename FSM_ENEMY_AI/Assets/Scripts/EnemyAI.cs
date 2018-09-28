@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour {
     private Animator animator;
     private Ray ray;
     private RaycastHit hit;
-    private float maxDistanceToCheck = 20.0f;
+    private float maxDistanceToCheck = 30.0f;
     private float currentDistance;
     private Vector3 checkDirection;
 
@@ -16,6 +16,11 @@ public class EnemyAI : MonoBehaviour {
     public Transform pointA;
     public Transform pointB;
     [HideInInspector]public GameObject player;
+
+    // Fireing buller
+    public float timer = 2;
+    public GameObject fireBall;
+    public Transform fireBallSpawn;
 
     public UnityEngine.AI.NavMeshAgent navMeshAgent;
 
@@ -47,6 +52,7 @@ public class EnemyAI : MonoBehaviour {
         // Then we check for visibility
         checkDirection = (player.transform.position - transform.position).normalized;
         ray = new Ray(transform.position, checkDirection);
+        //Debug.DrawLine(transform.position, transform.forward, Color.red);
         //Debug.DrawRay(transform.position, transform.forward, Color.red);
 
         if (Physics.Raycast(ray, out hit, maxDistanceToCheck))
@@ -91,5 +97,26 @@ public class EnemyAI : MonoBehaviour {
     public void ChaseState()
     {
         navMeshAgent.SetDestination(player.transform.position);
+        navMeshAgent.speed *= 2;
+    }
+
+    // Fire State
+    public void FireState()
+    {
+        StartCoroutine(Fire());
+              
+    }
+    IEnumerator Fire()
+    {
+        transform.LookAt(player.transform);
+        //Spawing bullet
+        var bullet = (GameObject)Instantiate(fireBall, fireBallSpawn.position, fireBallSpawn.rotation);
+
+        //Adding Velocity to bullet
+        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 20;
+
+        //Destroy bullet after 1 sec
+        Destroy(bullet, 1.5f);
+        yield return new WaitForSeconds(0.001f);
     }
 }
