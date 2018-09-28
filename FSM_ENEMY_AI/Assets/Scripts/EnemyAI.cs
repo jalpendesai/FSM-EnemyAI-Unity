@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour {
     private Animator animator;
     private Ray ray;
     private RaycastHit hit;
-    private float maxDistanceToCheck = 6.0f;
+    private float maxDistanceToCheck = 20.0f;
     private float currentDistance;
     private Vector3 checkDirection;
 
@@ -45,12 +45,13 @@ public class EnemyAI : MonoBehaviour {
         animator.SetFloat("distanceFromPlayer", currentDistance);
 
         // Then we check for visibility
-        checkDirection = player.transform.position - transform.position;
+        checkDirection = (player.transform.position - transform.position).normalized;
         ray = new Ray(transform.position, checkDirection);
+        //Debug.DrawRay(transform.position, transform.forward, Color.red);
 
         if (Physics.Raycast(ray, out hit, maxDistanceToCheck))
             {
-                if (hit.collider.gameObject == player)
+                if (hit.transform.gameObject.tag == player.gameObject.tag)
                 {
                     animator.SetBool("isPlayerVisible", true);
                 }

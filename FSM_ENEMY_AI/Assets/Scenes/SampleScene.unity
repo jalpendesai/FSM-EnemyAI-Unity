@@ -301,7 +301,7 @@ Transform:
   m_GameObject: {fileID: 772432860}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 2.24, z: 68.6}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -403,13 +403,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 911342549}
-  m_LocalRotation: {x: -0.031140732, y: 0.91122687, z: -0.40564808, w: -0.06438559}
-  m_LocalPosition: {x: 1.0880002, y: 47.552002, z: 80.696}
+  m_LocalRotation: {x: -0.029557517, y: 0.92087066, z: -0.38325185, w: -0.065127574}
+  m_LocalPosition: {x: 3.6, y: 50.5, z: 98.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 48.012, y: 367.911, z: -0.38700002}
+  m_LocalEulerAnglesHint: {x: 45.211002, y: 187.93799, z: -0.367}
 --- !u!81 &911342551
 AudioListener:
   m_ObjectHideFlags: 0
@@ -547,7 +547,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -636,7 +636,7 @@ Transform:
   m_GameObject: {fileID: 1450795704}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 3.5, y: 2.24, z: 48.2}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
