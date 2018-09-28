@@ -403,13 +403,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 911342549}
-  m_LocalRotation: {x: -0.029557517, y: 0.92087066, z: -0.38325185, w: -0.065127574}
-  m_LocalPosition: {x: 3.6, y: 50.5, z: 98.5}
+  m_LocalRotation: {x: 0.010937912, y: 0.7585438, z: -0.6515274, w: -0.0019742022}
+  m_LocalPosition: {x: 2.21, y: 84.68, z: 45.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 45.211002, y: 187.93799, z: -0.367}
+  m_LocalEulerAnglesHint: {x: 81.257, y: 186.51599, z: 7.2440004}
 --- !u!81 &911342551
 AudioListener:
   m_ObjectHideFlags: 0
@@ -654,6 +654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 1444730508}
   pointB: {fileID: 546412040}
+  player: {fileID: 0}
   navMeshAgent: {fileID: 0}
 --- !u!95 &1450795712
 Animator:

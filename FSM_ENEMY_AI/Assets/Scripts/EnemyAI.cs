@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour {
 
-    // General state machine variables
-    private GameObject player;
+    // General state machine variables 
     private Animator animator;
     private Ray ray;
     private RaycastHit hit;
@@ -16,6 +15,7 @@ public class EnemyAI : MonoBehaviour {
     // Patrol state variables
     public Transform pointA;
     public Transform pointB;
+    [HideInInspector]public GameObject player;
 
     public UnityEngine.AI.NavMeshAgent navMeshAgent;
 
@@ -68,6 +68,9 @@ public class EnemyAI : MonoBehaviour {
         // Lastly, we get the distance to the next waypoint target
         distanceFromTarget = Vector3.Distance(waypoints[currentTarget].position, transform.position);
         animator.SetFloat("distanceFromWaypoint", distanceFromTarget);
+
+
+        
     }
 
     public void SetNextPoint()
@@ -82,5 +85,11 @@ public class EnemyAI : MonoBehaviour {
                 break;
         }
         navMeshAgent.SetDestination(waypoints[currentTarget].position);
+    }
+
+    // Chase State
+    public void ChaseState()
+    {
+        navMeshAgent.SetDestination(player.transform.position);
     }
 }
