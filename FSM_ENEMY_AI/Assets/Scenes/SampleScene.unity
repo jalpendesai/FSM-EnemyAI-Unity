@@ -98,7 +98,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 1.5
+    agentRadius: 1
     agentHeight: 0.8
     agentSlope: 0
     agentClimb: 0.8
@@ -106,7 +106,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.5
+    cellSize: 0.33333334
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -201,7 +201,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 546412039}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 53.7, y: 0, z: -49.1}
+  m_LocalPosition: {x: 95.3, y: 0, z: -49.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1920025106}
@@ -530,6 +530,7 @@ GameObject:
   - component: {fileID: 1450795706}
   - component: {fileID: 1450795705}
   - component: {fileID: 1450795711}
+  - component: {fileID: 1450795712}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -654,6 +655,24 @@ MonoBehaviour:
   pointA: {fileID: 1444730508}
   pointB: {fileID: 546412040}
   navMeshAgent: {fileID: 0}
+--- !u!95 &1450795712
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1450795704}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f936bdf3ba66a14438da4d7123ee41f0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1920025105
 GameObject:
   m_ObjectHideFlags: 0

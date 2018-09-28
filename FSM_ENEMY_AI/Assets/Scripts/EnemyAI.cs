@@ -38,36 +38,36 @@ public class EnemyAI : MonoBehaviour {
         navMeshAgent.SetDestination(waypoints[currentTarget].position);
     }
 
-    //private void FixedUpdate()
-    //{
-    //    First we check distance from the player
-    //    currentDistance = Vector3.Distance(player.transform.position, transform.position);
-    //    animator.SetFloat("distanceFromPlayer", currentDistance);
+    private void FixedUpdate()
+    {
+        // First we check distance from the player
+        currentDistance = Vector3.Distance(player.transform.position, transform.position);
+        animator.SetFloat("distanceFromPlayer", currentDistance);
 
-    //    Then we check for visibility
-    //    checkDirection = player.transform.position - transform.position;
-    //    ray = new Ray(transform.position, checkDirection);
+        // Then we check for visibility
+        checkDirection = player.transform.position - transform.position;
+        ray = new Ray(transform.position, checkDirection);
 
-    //    if (Physics.Raycast(ray, out hit, maxDistanceToCheck))
-    //        {
-    //            if (hit.collider.gameObject == player)
-    //            {
-    //                animator.SetBool("isPlayerVisible", true);
-    //            }
-    //            else
-    //            {
-    //                animator.SetBool("isPlayerVisible", false);
-    //            }
-    //        }
-    //        else
-    //        {
-    //            animator.SetBool("isPlayerVisible", false);
-    //        }
+        if (Physics.Raycast(ray, out hit, maxDistanceToCheck))
+            {
+                if (hit.collider.gameObject == player)
+                {
+                    animator.SetBool("isPlayerVisible", true);
+                }
+                else
+                {
+                    animator.SetBool("isPlayerVisible", false);
+                }
+            }
+            else
+            {
+                animator.SetBool("isPlayerVisible", false);
+            }
 
-    //    Lastly, we get the distance to the next waypoint target
-    //    distanceFromTarget = Vector3.Distance(waypoints[currentTarget].position, transform.position);
-    //    animator.SetFloat("distanceFromWaypoint", distanceFromTarget);
-    //}
+        // Lastly, we get the distance to the next waypoint target
+        distanceFromTarget = Vector3.Distance(waypoints[currentTarget].position, transform.position);
+        animator.SetFloat("distanceFromWaypoint", distanceFromTarget);
+    }
 
     public void SetNextPoint()
     {
