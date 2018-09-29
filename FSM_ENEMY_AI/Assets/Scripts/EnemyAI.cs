@@ -18,7 +18,7 @@ public class EnemyAI : MonoBehaviour {
     [HideInInspector]public GameObject player;
 
     // Chase State
-
+    public float chaseTime = 0;
 
     // Fireing buller
     public float timer = 2;
@@ -55,8 +55,10 @@ public class EnemyAI : MonoBehaviour {
         // Then we check for visibility
         checkDirection = (player.transform.position - transform.position).normalized;
         ray = new Ray(transform.position, checkDirection);
-        //Debug.DrawLine(transform.position, transform.forward, Color.red);
-        //Debug.DrawRay(transform.position, transform.forward, Color.red);
+        
+        
+        Vector3 forward = transform.TransformDirection(Vector3.forward) * maxDistanceToCheck;
+        Debug.DrawRay(transform.position, forward, Color.red);
 
         if (Physics.Raycast(ray, out hit, maxDistanceToCheck))
             {
@@ -74,14 +76,14 @@ public class EnemyAI : MonoBehaviour {
                 animator.SetBool("isPlayerVisible", false);
             }
 
-        // Lastly, we get the distance to the next waypoint target
-        distanceFromTarget = Vector3.Distance(waypoints[currentTarget].position, transform.position);
+            // Lastly, we get the distance to the next waypoint target
+            distanceFromTarget = Vector3.Distance(waypoints[currentTarget].position, transform.position);
         animator.SetFloat("distanceFromWaypoint", distanceFromTarget);
 
         
         
     }
-
+    
     public void SetNextPoint()
     {
         switch (currentTarget)
@@ -99,7 +101,8 @@ public class EnemyAI : MonoBehaviour {
     // Chase State
     public void ChaseState()
     {
-        StartCoroutine(Chase());       
+        StartCoroutine(Chase());
+        StartCoroutine(StartCountdown());
     }
 
     // --- Chasing Player ---
@@ -109,6 +112,23 @@ public class EnemyAI : MonoBehaviour {
         navMeshAgent.speed *= 2;
         yield return new WaitForFixedUpdate();
 
+    }
+
+    public IEnumerator StartCountdown(float cTime = 7)
+    {
+        chaseTime = cTime;
+        while (chaseTime > 0)
+        {
+            Debug.Log("Countdown: " + chaseTime);
+            yield return new WaitForSeconds(1.0f);
+            chaseTime--;
+        }
+        // Check if player is chased
+        if (currentDistance < 10.0f & chaseTime < 2.0f)
+        {
+            animator.SetBool("isChased", true);
+            animator.gameObject.GetComponent<EnemyAI>().SetNextPoint();
+        }
     }
 
     // Fire State
@@ -129,5 +149,20 @@ public class EnemyAI : MonoBehaviour {
         //Destroy bullet after 1 sec
         Destroy(bullet, 1.5f);
         yield return new WaitForSeconds(0.001f);
+    }
+
+    // Flee if player is chased
+    public void Flee()
+    {
+
+    }
+
+
+    // Stops and Investigate
+
+    public void LookAround()
+    {
+        
+        //navMeshAgent.updatePosition = false;
     }
 }

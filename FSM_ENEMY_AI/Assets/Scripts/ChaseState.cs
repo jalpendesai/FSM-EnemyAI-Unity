@@ -26,6 +26,7 @@ public class ChaseState : StateMachineBehaviour {
         EnemyAI enemyAi = animator.gameObject.GetComponent<EnemyAI>();
         enemyAi.navMeshAgent.speed = 10;
         enemyAi.SetNextPoint();
+        animator.SetBool("isChased", false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
